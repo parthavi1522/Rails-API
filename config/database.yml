@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: rails_assignments_development
+  username: root
+  password: <%= Rails.application.credentials.dig(:development, :database_password) %>
+  host: localhost
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: rails_assignments_test
+
+production:
+  <<: *default
